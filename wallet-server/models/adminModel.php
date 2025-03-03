@@ -38,4 +38,26 @@ class Admin
       return responseError("Failed to signup Admin");
     }
   }
+
+  //Admin Singin
+  public function signIn($email, $password)
+  {
+    if (empty($email) || empty($password)) {
+      return responseError("Missing field is required.");
+    }
+
+    $query = $this->conn->prepare("SELECT id, password FROM Admins WHERE email = ?");
+    $query->bind_param("s", $email);
+    $query->execute();
+    $result = $query->get_result();
+
+    $Admin = $result->fetch_assoc();
+
+    if ($Admin && verifyPassword($password, $Admin["password"])) {
+      return responseSuccess("Sign in successful", ["id" => $Admin["id"], "email" => $email]);
+    } else {
+      return responseError("Wrong Email or Password");
+    }
+  }
+
 }
