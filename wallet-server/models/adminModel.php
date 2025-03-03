@@ -60,4 +60,32 @@ class Admin
     }
   }
 
+  //Admin Reset Password
+  public function resetPassword($id, $newPassword)
+  {
+    if (empty($id) || empty($newPassword)) {
+      return responseError("Missing field is required.");
+    }
+
+    $query = $this->conn->prepare("SELECT id FROM Admins WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+
+    if ($result->num_rows === 0) {
+      return responseError("No Admin found with this id");
+    }
+
+    $hashedPassword = hashPassword($newPassword);
+
+    $query = $this->conn->prepare("UPDATE Admins SET password = ? WHERE id = ?");
+    $query->bind_param("si", $hashedPassword, $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Password reset successfully.");
+    } else {
+      return responseError("Failed to reset password.");
+    }
+  }
 }
