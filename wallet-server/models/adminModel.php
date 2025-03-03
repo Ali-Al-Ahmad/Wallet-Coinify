@@ -104,4 +104,24 @@ class Admin
 
     return json_encode($Admins);
   }
+
+  //Get Admin BY ID
+  public function getAdminById($id)
+  {
+    if (empty($id)) {
+      return responseError("Admin ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM Admins WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+    $Admin = $result->fetch_assoc();
+
+    if ($Admin) {
+      return responseSuccess("Admin found", $Admin);
+    } else {
+      return responseError("Admin not found");
+    }
+  }
 }
