@@ -12,3 +12,15 @@ function responseError($message)
   $response = ["status" => "error", "message" => $message];
   return json_encode($response);
 }
+
+//hash password with bcrypt
+function hashPassword($password)
+{
+  return password_hash($password, PASSWORD_BCRYPT);
+}
+
+//verify and compare the hashed password
+function verifyPassword($password, $hashedPassword)
+{
+  return password_verify($password, $hashedPassword);
+}
