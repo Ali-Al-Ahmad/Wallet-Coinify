@@ -88,4 +88,20 @@ class Admin
       return responseError("Failed to reset password.");
     }
   }
+
+  //Get All Admins
+  public static function getAllAdmins()
+  {
+    global $conn;
+    $query = $conn->prepare("SELECT * FROM Admins ORDER BY id DESC");
+    $query->execute();
+    $result = $query->get_result();
+    $Admins = [];
+
+    while ($Admin = $result->fetch_assoc()) {
+      $Admins[] = $Admin;
+    }
+
+    return json_encode($Admins);
+  }
 }
