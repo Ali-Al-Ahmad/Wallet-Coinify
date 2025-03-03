@@ -143,4 +143,22 @@ class Admin
       return responseError("Failed to update Admin");
     }
   }
+
+  // Delete Admin
+  public function delete($id)
+  {
+    if (empty($id)) {
+      return responseError("Admin ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM Admins WHERE id = ?");
+    $query->bind_param("i", $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Admin deleted successfully");
+    } else {
+      return responseError("Failed to delete Admin");
+    }
+  }
 }
