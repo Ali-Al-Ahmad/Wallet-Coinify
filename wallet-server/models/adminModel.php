@@ -124,4 +124,23 @@ class Admin
       return responseError("Admin not found");
     }
   }
+
+  // Update Admin
+  public function update($id, $email)
+  {
+    if (empty($id)) {
+      return responseError("Admin ID is required");
+    }
+
+    $query = $this->conn->prepare("UPDATE Admins SET email = ? WHERE id = ?");
+
+    $query->bind_param("si", $email, $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Admin updated successfully");
+    } else {
+      return responseError("Failed to update Admin");
+    }
+  }
 }
