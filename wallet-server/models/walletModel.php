@@ -123,4 +123,19 @@ class Wallet
       return responseError("Failed to delete Wallet");
     }
   }
+
+  // Delete deleteUser Wallets
+  public function deleteAllWalletsForUser($user_id)
+  {
+    if (empty($user_id)) {
+      return responseError("ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM Wallets WHERE user_id = ?");
+    $query->bind_param("i", $user_id);
+    $success = $query->execute();
+    $delAllCards = new Card();
+    $delAllCards->deleteAllCardsByUser($user_id);
+    return $success;
+  }
 }
