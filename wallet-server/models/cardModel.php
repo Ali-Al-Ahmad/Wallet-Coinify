@@ -31,4 +31,20 @@ class Card
       return false;
     }
   }
+
+  //Get All Cards
+  public static function getAllCards()
+  {
+    global $conn;
+    $query = $conn->prepare("SELECT * FROM Cards ORDER BY id DESC");
+    $query->execute();
+    $result = $query->get_result();
+    $cards = [];
+
+    while ($card = $result->fetch_assoc()) {
+      $cards[] = $card;
+    }
+
+    return json_encode($cards);
+  }
 }
