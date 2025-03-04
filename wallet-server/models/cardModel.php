@@ -47,4 +47,24 @@ class Card
 
     return json_encode($cards);
   }
+
+  //Get Card BY ID
+  public function getCardById($id)
+  {
+    if (empty($id)) {
+      return responseError("Card ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM Cards WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+    $card = $result->fetch_assoc();
+
+    if ($card) {
+      return responseSuccess("Card found", $card);
+    } else {
+      return responseError("Card not found");
+    }
+  }
 }
