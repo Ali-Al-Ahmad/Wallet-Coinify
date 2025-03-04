@@ -44,4 +44,24 @@ class Ticket
 
     return json_encode($tickets);
   }
+
+  //Get Ticket BY ID
+  public function getTicketById($id)
+  {
+    if (empty($id)) {
+      return responseError("Ticket ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM Tickets WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+    $ticket = $result->fetch_assoc();
+
+    if ($ticket) {
+      return responseSuccess("Ticket found", $ticket);
+    } else {
+      return responseError("Ticket not found");
+    }
+  }
 }
