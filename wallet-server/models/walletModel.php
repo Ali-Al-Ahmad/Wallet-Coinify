@@ -138,4 +138,24 @@ class Wallet
     $delAllCards->deleteAllCardsByUser($user_id);
     return $success;
   }
+
+  // Get all Wallets of the User
+  public function getAllWalletsByUserId($user_id)
+  {
+    if (empty($user_id)) {
+      return responseError("User ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM Wallets WHERE user_id = ? ORDER BY id");
+    $query->bind_param("i", $user_id);
+    $query->execute();
+    $result = $query->get_result();
+    $wallets = [];
+
+    while ($wallet = $result->fetch_assoc()) {
+      $wallets[] = $wallet;
+    }
+
+    return responseSuccess("Wallets by user", $wallets);
+  }
 }
