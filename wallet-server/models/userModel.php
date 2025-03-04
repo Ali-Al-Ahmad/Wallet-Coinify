@@ -48,4 +48,25 @@ class User
       return responseError("Failed to signup user");
     }
   }
+
+  //User Singin
+  public function signIn($email, $password)
+  {
+    if (empty($email) || empty($password)) {
+      return responseError("Missing field is required.");
+    }
+
+    $query = $this->conn->prepare("SELECT id, password FROM users WHERE email = ?");
+    $query->bind_param("s", $email);
+    $query->execute();
+    $result = $query->get_result();
+
+    $user = $result->fetch_assoc();
+
+    if ($user && verifyPassword($password, $user["password"])) {
+      return responseSuccess("Sign in successful", ["id" => $user["id"], "email" => $email]);
+    } else {
+      return responseError("Wrong Email or Password");
+    }
+  }
 }
