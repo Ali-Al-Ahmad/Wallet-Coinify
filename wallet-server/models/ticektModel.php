@@ -28,4 +28,20 @@ class Ticket
       return responseError("Failed to add Ticket");
     }
   }
+
+  //Get All Tickets
+  public static function getAllTickets()
+  {
+    global $conn;
+    $query = $conn->prepare("SELECT * FROM Tickets ORDER BY id DESC");
+    $query->execute();
+    $result = $query->get_result();
+    $tickets = [];
+
+    while ($ticket = $result->fetch_assoc()) {
+      $tickets[] = $ticket;
+    }
+
+    return json_encode($tickets);
+  }
 }
