@@ -1,0 +1,51 @@
+<?php
+require_once "cardModel.php";
+
+class Wallet
+{
+  private $conn;
+
+  public function __construct()
+  {
+    global $conn;
+    $this->conn = $conn;
+  }
+
+  //Wallet Add
+  public function addWallet($user_id, $name)
+  {
+    $query = $this->conn->prepare("SELECT id FROM Wallets WHERE user_id = ? and name = ?");
+    $query->bind_param("is", $user_id, $name);
+    $query->execute();
+    $result = $query->get_result();
+
+    if ($result->num_rows > 0) {
+      return responseError("Wallet already exists");
+      exit();
+    }
+    $query->close();
+    $starting_balance = 0;
+    $query = $this->conn->prepare("INSERT INTO Wallets (user_id, name, balance) VALUES (?, ?, ?)");
+    $query->bind_param("isd", $user_id, $name, $starting_balance);
+    $success = $query->execute();
+
+    if ($success) {
+      $walletId = $this->conn->insert_id;
+
+      $newCard = new Card();
+      $cardSuccess = $newCard->addCard($user_id, $walletId);
+
+      if (!$cardSuccess) {
+        $this->delete($walletId);
+        return responseError("Failed to add Wallet - Card");
+      }
+
+      return responseSuccess(
+        "Wallet added successfully",
+        ["id" => $walletId]
+      );
+    } else {
+      return responseError("Failed to add Wallet");
+    }
+  }
+}
