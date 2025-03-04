@@ -84,4 +84,23 @@ class Wallet
       return responseError("Wallet not found");
     }
   }
+
+  // Update Wallet
+  public function update($id, $user_id, $name, $balance)
+  {
+    if (empty($id)) {
+      return responseError("Wallet ID is required");
+    }
+
+    $query = $this->conn->prepare("UPDATE Wallets SET user_id = ?, name = ?, balance = ? WHERE id = ?");
+
+    $query->bind_param("isdi", $user_id, $name, $balance, $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Wallet updated successfully");
+    } else {
+      return responseError("Failed to update Wallet");
+    }
+  }
 }
