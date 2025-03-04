@@ -152,4 +152,25 @@ class User
       return responseError("Failed to update user");
     }
   }
+
+  // Delete User
+  public function delete($id)
+  {
+    if (empty($id)) {
+      return responseError("User ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM users WHERE id = ?");
+    $query->bind_param("i", $id);
+    $success = $query->execute();
+
+    if ($success) {
+      $delWallet = new Wallet();
+      $delWallet->deleteAllWalletsForUser($id);
+
+      return responseSuccess("User deleted successfully");
+    } else {
+      return responseError("Failed to delete user");
+    }
+  }
 }
