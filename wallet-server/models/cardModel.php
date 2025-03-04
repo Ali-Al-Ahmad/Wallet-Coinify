@@ -86,4 +86,22 @@ class Card
       return responseError("Failed to update Card");
     }
   }
+
+  // Delete Card
+  public function delete($id)
+  {
+    if (empty($id)) {
+      return responseError("Card ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM Cards WHERE id = ?");
+    $query->bind_param("i", $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Card deleted successfully");
+    } else {
+      return responseError("Failed to delete Card");
+    }
+  }
 }
