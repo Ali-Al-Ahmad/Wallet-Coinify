@@ -64,4 +64,23 @@ class Ticket
       return responseError("Ticket not found");
     }
   }
+
+  // Update Ticket
+  public function update($id, $user_id, $subject, $description, $status)
+  {
+    if (empty($id)) {
+      return responseError("Ticket ID is required");
+    }
+
+    $query = $this->conn->prepare("UPDATE Tickets SET user_id = ?, subject = ?, description = ?,status = ? WHERE id = ?");
+
+    $query->bind_param("isssi", $user_id, $subject, $description, $status, $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Ticket updated successfully");
+    } else {
+      return responseError("Failed to update Ticket");
+    }
+  }
 }
