@@ -133,4 +133,23 @@ class User
       return responseError("User not found");
     }
   }
+
+  // Update User
+  public function update($id, $email)
+  {
+    if (empty($id)) {
+      return responseError("User ID is required");
+    }
+
+    $query = $this->conn->prepare("UPDATE users SET email = ? WHERE id = ?");
+
+    $query->bind_param("si", $email, $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("User updated successfully");
+    } else {
+      return responseError("Failed to update user");
+    }
+  }
 }
