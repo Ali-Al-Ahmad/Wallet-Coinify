@@ -64,4 +64,24 @@ class Wallet
 
     return json_encode($wallets);
   }
+
+  //Get Wallet BY ID
+  public function getWalletById($id)
+  {
+    if (empty($id)) {
+      return responseError("Wallet ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM Wallets WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+    $wallet = $result->fetch_assoc();
+
+    if ($wallet) {
+      return responseSuccess("Wallet found", $wallet);
+    } else {
+      return responseError("Wallet not found");
+    }
+  }
 }
