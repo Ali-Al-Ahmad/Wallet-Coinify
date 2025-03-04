@@ -48,4 +48,20 @@ class Wallet
       return responseError("Failed to add Wallet");
     }
   }
+
+  //Get All Wallets
+  public static function getAllWallets()
+  {
+    global $conn;
+    $query = $conn->prepare("SELECT * FROM Wallets ORDER BY id DESC");
+    $query->execute();
+    $result = $query->get_result();
+    $wallets = [];
+
+    while ($wallet = $result->fetch_assoc()) {
+      $wallets[] = $wallet;
+    }
+
+    return json_encode($wallets);
+  }
 }
