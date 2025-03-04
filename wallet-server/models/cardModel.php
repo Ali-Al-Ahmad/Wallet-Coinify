@@ -150,4 +150,33 @@ class Card
 
     return responseSuccess("Card", $cards);
   }
+
+  //checkWalletCard
+
+  public function checkWalletCard($wallet_id, $card_number, $pin)
+  {
+    if (empty($wallet_id) || empty($card_number) || empty($pin)) {
+      return responseError("Missing field required");
+    }
+    $query = $this->conn->prepare("SELECT id,expiry_date FROM cards WHERE wallet_id = ? AND number = ? AND pin = ?");
+    $query->bind_param("isi", $wallet_id, $card_number, $pin);
+    $query->execute();
+    $result = $query->get_result();
+
+    $card = $result->fetch_assoc();
+
+    if (!$card) {
+      return false;
+      exit();
+    }
+
+    $now = new DateTime();
+    $card_date = new DateTime($card["expiry_date"]);
+    if ($now > $card_date) {
+      return false;
+      exit();
+    }
+
+    return true;
+  }
 }
