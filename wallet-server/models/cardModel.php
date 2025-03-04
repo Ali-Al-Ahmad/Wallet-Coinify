@@ -130,4 +130,24 @@ class Card
     $success = $query->execute();
     return $success;
   }
+
+  //getCardbywallet
+  public function getCardByWallet($wallet_id)
+  {
+    if (empty($wallet_id)) {
+      return responseError("Wallet ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM Cards WHERE wallet_id = ?");
+    $query->bind_param("i", $wallet_id);
+    $query->execute();
+    $result = $query->get_result();
+    $cards = [];
+
+    while ($card = $result->fetch_assoc()) {
+      $cards[] = $card;
+    }
+
+    return responseSuccess("Card", $cards);
+  }
 }
