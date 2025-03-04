@@ -117,4 +117,17 @@ class Card
     $success = $query->execute();
     return $success;
   }
+
+  // Delete All Cards by User
+  public function deleteAllCardsByUser($user_id)
+  {
+    if (empty($wallet_id)) {
+      return responseError("Card ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM cards WHERE wallet_id IN (SELECT id FROM wallets WHERE user_id = ?)");
+    $query->bind_param("i", $user_id);
+    $success = $query->execute();
+    return $success;
+  }
 }
