@@ -67,4 +67,23 @@ class Card
       return responseError("Card not found");
     }
   }
+
+  // Update Card
+  public function update($id, $wallet_id, $number, $pin, $expiry_date)
+  {
+    if (empty($id) || empty($wallet_id) || empty($number) || empty($pin) || empty($expiry_date)) {
+      return responseError("Missing field is required to update");
+    }
+
+    $query = $this->conn->prepare("UPDATE Cards SET wallet_id = ?, number = ?, pin = ?, expiry_date = ? WHERE id = ?");
+
+    $query->bind_param("isisi", $wallet_id, $number, $pin, $expiry_date, $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Card updated successfully");
+    } else {
+      return responseError("Failed to update Card");
+    }
+  }
 }
