@@ -113,4 +113,24 @@ class User
 
     return json_encode($users);
   }
+
+  //Get User BY ID
+  public function getUserById($id)
+  {
+    if (empty($id)) {
+      return responseError("User ID is required");
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM users WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user) {
+      return responseSuccess("User found", $user);
+    } else {
+      return responseError("User not found");
+    }
+  }
 }
