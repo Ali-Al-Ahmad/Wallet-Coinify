@@ -97,4 +97,20 @@ class User
       return responseError("Failed to reset password.");
     }
   }
+
+  //Get All Users
+  public static function getAllUsers()
+  {
+    global $conn;
+    $query = $conn->prepare("SELECT * FROM users ORDER BY id DESC");
+    $query->execute();
+    $result = $query->get_result();
+    $users = [];
+
+    while ($user = $result->fetch_assoc()) {
+      $users[] = $user;
+    }
+
+    return json_encode($users);
+  }
 }
