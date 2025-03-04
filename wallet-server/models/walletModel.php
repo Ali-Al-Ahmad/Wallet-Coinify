@@ -103,4 +103,24 @@ class Wallet
       return responseError("Failed to update Wallet");
     }
   }
+
+  // Delete Wallet
+  public function delete($id)
+  {
+    if (empty($id)) {
+      return responseError("Wallet ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM Wallets WHERE id = ?");
+    $query->bind_param("i", $id);
+    $success = $query->execute();
+
+    if ($success) {
+      $delCard = new Card();
+      $delCard->deleteCardByWallet($id);
+      return responseSuccess("Wallet deleted successfully");
+    } else {
+      return responseError("Failed to delete Wallet");
+    }
+  }
 }
