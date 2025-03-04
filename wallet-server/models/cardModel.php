@@ -104,4 +104,17 @@ class Card
       return responseError("Failed to delete Card");
     }
   }
+
+  // Delete Card by WalletId
+  public function deleteCardByWallet($wallet_id)
+  {
+    if (empty($wallet_id)) {
+      return responseError("Card ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM cards WHERE wallet_id = ?");
+    $query->bind_param("i", $wallet_id);
+    $success = $query->execute();
+    return $success;
+  }
 }
