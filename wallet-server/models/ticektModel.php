@@ -83,4 +83,22 @@ class Ticket
       return responseError("Failed to update Ticket");
     }
   }
+
+  // Delete Ticket
+  public function delete($id)
+  {
+    if (empty($id)) {
+      return responseError("Ticket ID is missing");
+    }
+
+    $query = $this->conn->prepare("DELETE FROM Tickets WHERE id = ?");
+    $query->bind_param("i", $id);
+    $success = $query->execute();
+
+    if ($success) {
+      return responseSuccess("Ticket deleted successfully");
+    } else {
+      return responseError("Failed to delete Ticket");
+    }
+  }
 }
