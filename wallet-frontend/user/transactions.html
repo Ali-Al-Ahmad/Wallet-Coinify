@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="../styles/style.css"
+    />
+    <title>User Transaction Page</title>
+  </head>
+  <body>
+    <!-----Start Of Header Section -->
+    <header>
+      <a href="#"
+        ><img
+          src="/assets/images/logo1.png"
+          alt="logo.jpg"
+      /></a>
+      <nav>
+        <div class="nav-item">
+          <i>
+            <a href="wallets.html">Wallets</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a href="profile.html">Profile</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a
+              href="../index.html"
+              id="logout"
+              >Logout</a
+            >
+          </i>
+        </div>
+      </nav>
+    </header>
+    <!-----End Of Header Section -->
+    <!-----Start Of Transactions Section -->
+    <section class="transactions-page">
+      <h1><span id="profile_header_first_name"></span>Transactions</h1>
+      <div class="buttons-section">
+        <div
+          id="deposit-button"
+          class="button-item"
+        >
+          <p>Deposit</p>
+        </div>
+        <div
+          id="withdraw-button"
+          class="button-item"
+        >
+          <p>Withdraw</p>
+        </div>
+        <div
+          id="transfer-button"
+          class="button-item"
+        >
+          <p>Transfer</p>
+        </div>
+      </div>
+      <div class="top-cards">
+        <div class="balance-card">
+          <img
+            src="../assets/icons/wallet.svg"
+            alt=""
+          />
+          <h3>Balance</h3>
+          <h3 id="total_balance">$0</h3>
+        </div>
+
+        <div class="balance-card">
+          <img
+            src="../assets/icons/sent.svg"
+            alt=""
+          />
+          <h3>Sent</h3>
+          <h3 id="sent_balance">$0</h3>
+        </div>
+
+        <div class="balance-card">
+          <img
+            src="../assets/icons/received.svg"
+            alt=""
+          />
+          <h3>Received</h3>
+          <h3 id="received_balance">$0</h3>
+        </div>
+      </div>
+      <!-- table -->
+      <table
+        id="transactions-table"
+        class="table-info"
+      >
+        <tr>
+          <th>Type</th>
+          <th>Amount</th>
+          <th class="hidee">Sender</th>
+          <th class="hidee">Recipient</th>
+          <th class="hidee">Date</th>
+        </tr>
+      </table>
+      <!-- table -->
+    </section>
+
+    <!-----End Of Transactions Section -->
+    <section
+      id="deposit_section"
+      class="popup-container hidden"
+    >
+      <form
+        id="popup-form"
+        class="popup-form"
+      >
+        <div class="input-field">
+          <img
+            src="../assets/icons/dollarsign.svg"
+            alt="dollar.svg"
+          />
+          <input
+            class="input-field"
+            type="number"
+            id="deposit-name-input"
+            name="name"
+            placeholder="Amount"
+            required
+          />
+        </div>
+        <select
+          id="wallets-dropdown"
+          name="wallets_dropdown"
+          class="wallets-dropdown"
+        ></select>
+        <div class="input-field submit-button">
+          <input
+            id="submit-deposit"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+        <div class="input-field submit-button-cancel">
+          <button id="cancel-deposit">Cancel</button>
+        </div>
+      </form>
+    </section>
+    <!----- withdraw-->
+    <section
+      id="withdraw_section"
+      class="popup-container hidden"
+    >
+      <form
+        id="popup-form-withdraw"
+        class="popup-form"
+      >
+        <div class="input-field">
+          <img
+            src="../assets/icons/dollarsign.svg"
+            alt="dollar.svg"
+          />
+          <input
+            class="input-field"
+            type="number"
+            id="withdraw-amount-input"
+            name="amount"
+            placeholder="Amount"
+            required
+          />
+        </div>
+        <select
+          id="wallets-dropdown-withdraw"
+          name="wallets_dropdown"
+          class="wallets-dropdown"
+        ></select>
+
+        <div class="input-field">
+          <img
+            src="../assets/icons/password.svg"
+            alt="dollar.svg"
+          />
+          <input
+            class="input-field"
+            type="text"
+            id="withdraw-card-input"
+            name="card_number"
+            placeholder="Card Number"
+            required
+          />
+        </div>
+        <div class="input-field">
+          <img
+            src="../assets/icons/password.svg"
+            alt="dollar.svg"
+          />
+          <input
+            class="input-field"
+            type="number"
+            id="withdraw-pin-input"
+            name="pin"
+            placeholder="PIN"
+            required
+          />
+        </div>
+
+        <div class="input-field submit-button">
+          <input
+            id="submit-withdraw"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+        <div class="input-field submit-button-cancel">
+          <button id="cancel-withdraw">Cancel</button>
+        </div>
+      </form>
+    </section>
+    <!----- withdraw-->
+    <!----transfer-->
+    <section
+      id="transfer_section"
+      class="popup-container hidden"
+    >
+      <form
+        id="popup-form-transfer"
+        class="popup-form"
+      >
+        <div class="input-field">
+          <img
+            src="../assets/icons/dollarsign.svg"
+            alt="dollar.svg"
+          />
+          <input
+            class="input-field"
+            type="number"
+            id="transfer-amount-input"
+            name="amount"
+            placeholder="Amount"
+            required
+          />
+        </div>
+        <select
+          id="wallets_dropdown-sel"
+          name="wallets_dropdown-sel"
+          class="wallets_dropdown-sel"
+        ></select>
+        <!------  search ------->
+        <input
+          type="text"
+          class="search-input"
+          id="searchEmail"
+          onkeyup="filterEmailDropDwon()"
+          placeholder="Search email..."
+        />
+
+        <select
+          id="emailDropdown"
+          name="wallets_dropdown"
+          class="wallets-dropdown"
+          onchange="updateEmailInput()"
+        >
+          <option value="">email...</option>
+        </select>
+        <!------  search ------->
+
+        <div class="input-field submit-button">
+          <input
+            id="submit-transfer"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+        <div class="input-field submit-button-cancel">
+          <button id="cancel-transfer">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-----End Of transfer Section -->
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/axiosInstance.js"></script>
+    <script src="../js/userTransactions.js"></script>
+  </body>
+</html>
