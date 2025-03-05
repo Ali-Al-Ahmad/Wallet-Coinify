@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Headers: Content-Type");
 
 
-$db_host = "52.47.202.106";
+$db_host = "localhost";
 $db_user = "root";
 $db_password = "ali12345678";
 $db_name = "wallet_database";
