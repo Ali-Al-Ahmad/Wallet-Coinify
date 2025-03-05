@@ -5,9 +5,9 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Headers: Content-Type");
 
 
-$db_host = "localhost";
+$db_host = "52.47.202.106";
 $db_user = "root";
-$db_password = "";
+$db_password = "ali12345678";
 $db_name = "wallet";
 
 $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
