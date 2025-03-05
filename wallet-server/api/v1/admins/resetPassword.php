@@ -4,10 +4,10 @@ require_once "../../../utils/utils.php";
 require_once "../../../models/adminModel.php";
 
 
-if (!isset($data["email"]) || !isset($data["password"])) {
-  die(responseError("Missing email or password!"));
+if (!isset($data["id"]) || !isset($data["password"])) {
+    die(responseError("Missing information!"));
 }
 
 $admin = new Admin();
-$response = $admin->signIn($data["email"], $data["password"]);
+$response = $admin->resetPassword($data["id"], $data["password"]);
 echo $response;

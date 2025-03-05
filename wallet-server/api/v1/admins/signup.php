@@ -5,9 +5,10 @@ require_once "../../../models/adminModel.php";
 
 
 if (!isset($data["email"]) || !isset($data["password"])) {
-  die(responseError("Missing email or password!"));
+    die(responseError("Missing email or password!"));
 }
 
 $admin = new Admin();
-$response = $admin->signIn($data["email"], $data["password"]);
+$response = $admin->signUp($data["email"], $data["password"]);
+
 echo $response;
