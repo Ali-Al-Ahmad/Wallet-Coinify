@@ -182,4 +182,31 @@ class Transaction
 
     return responseSuccess("Wallet Transactions", $transactions);
   }
+
+  // Get transactions by User
+  public function getUserTransactions($user_id)
+  {
+    if (empty($user_id)) {
+      die(responseError("User ID is required"));
+    }
+
+    $query = $this->conn->prepare("
+        SELECT * FROM transactions 
+        WHERE sender_wallet_id IN (SELECT id FROM Wallets WHERE user_id = ?) 
+        OR recipient_wallet_id IN (SELECT id FROM Wallets WHERE user_id = ?) 
+        ORDER BY id DESC
+    ");
+
+    $query->bind_param("ii", $user_id, $user_id);
+    $query->execute();
+    $result = $query->get_result();
+
+
+    $transactions = [];
+    while ($transaction = $result->fetch_assoc()) {
+      $transactions[] = $transaction;
+    }
+
+    return responseSuccess("User Transactions", $transactions);
+  }
 }
