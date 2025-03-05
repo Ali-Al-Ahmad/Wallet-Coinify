@@ -1,0 +1,580 @@
+/**Adding Font + Reset Css**/
+@font-face {
+  font-family: RobotoFont;
+  src: url(/assets/fonts/static/Roboto-Regular.ttf);
+}
+html {
+  scroll-behavior: smooth;
+}
+::selection {
+  background-color: #aa9a497d;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: RobotoFont, monospace, sans-serif;
+}
+body {
+  background-color: var(--white-color);
+}
+
+:root {
+  --grey-black: #333333;
+  --gold: #aa9a49;
+  --gray: #efefef;
+  --white-color: #fcfaf9;
+  --gray-second: #757575;
+}
+a {
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+/**Sing-in Page**/
+.sign-in-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+.sign-in-form {
+  background-color: var(--gold);
+  width: 40vw;
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  border-radius: 10px;
+}
+.input-field {
+  width: 98%;
+  margin-bottom: 0.5em;
+  position: relative;
+}
+.input-field > img {
+  width: 1.2em;
+  height: 1.2em;
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 12px;
+}
+.sign-in-form input,
+.popup-form input {
+  width: 100%;
+  min-height: fit-content;
+  padding: 12px 40px;
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  outline: none;
+}
+
+input:focus {
+  outline: 2px solid var(--grey-black);
+  caret-color: var(--gold);
+}
+
+.submit-button input {
+  background-color: var(--grey-black);
+  color: var(--white-color);
+  cursor: pointer;
+}
+input[type='submit']:hover {
+  background-color: #4d4d4d;
+}
+/** Endo of Sing-in Page **/
+/* ------- index.html------------- */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  min-height: fit-content;
+  height: 10vh;
+  background-color: var(--grey-black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 5%;
+}
+header > nav {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 3em;
+}
+header a > img {
+  padding: 1px 0px 5px 0px;
+  width: 5em;
+  height: 5em;
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+nav .nav-item {
+  font-size: 1.3em;
+  opacity: 0.95;
+}
+header a:hover {
+  color: var(--gold);
+}
+
+/*endHeader*/
+
+.landing-page .main-section {
+  display: flex;
+  width: 100%;
+  /* height: 80vh; */
+  max-height: 80vh;
+}
+.landing-page .main-section .main-left-section {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 0px 0px 5%;
+  height: 100%;
+  min-height: fit-content;
+}
+.landing-page .main-section .main-right-section {
+  width: 70%;
+  max-height: 100%;
+}
+.landing-page .main-right-section img {
+  max-height: 100%;
+  width: 100%;
+}
+
+.landing-page .main-left-section h1 {
+  font-size: 3.5em;
+  width: 100%;
+  padding-right: 30%;
+}
+
+.landing-page .main-left-section .brand {
+  font-size: 4.3em;
+  color: var(--gold);
+  margin: 5px 0px;
+}
+.landing-page .main-buttons {
+  width: 100%;
+  display: flex;
+  gap: 2em;
+}
+
+.landing-page .main-buttons a {
+  padding: 0.8em 3em;
+  border-radius: 15px;
+  min-width: fit-content;
+  transition: all 0.3s ease-in-out;
+  font-size: 1em;
+  font-weight: bold;
+  max-height: 3em;
+}
+.landing-page .main-buttons a:hover {
+  transform: scale(1.1);
+}
+
+.landing-page .main-buttons .main-signup-button {
+  background-color: var(--grey-black);
+}
+
+.landing-page .main-buttons .main-signin-button {
+  border: 2px solid var(--gold);
+  color: var(--grey-black);
+}
+.landing-page .main-buttons .main-signin-button:hover {
+  border: 2px solid var(--white-color);
+  color: var(--white-color);
+  background-color: var(--gold);
+}
+
+/*Landing Page Cards*/
+.landing-page-cards {
+  width: 90%;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+}
+.landing-card {
+  background-color: gainsboro;
+  width: 30%;
+  height: 220px;
+  border-radius: 15px;
+  font-size: 1em;
+}
+.landing-card h4 {
+  color: var(--grey-black);
+  margin-bottom: 10px;
+}
+.landing-card .card-head {
+  padding: 15px;
+  border-radius: 15px 15px 0 0;
+  background-color: var(--gold);
+  overflow: hidden;
+  height: 65%;
+}
+.landing-card .card-body {
+  height: 35%;
+  padding: 15px;
+  border-radius: 0 0 15px 15px;
+
+  background-color: var(--grey-black);
+}
+.landing-card p {
+  color: var(--white-color);
+}
+
+.landing-card .card-body .card-body-shapes {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.landing-card .card-body .card-body-shape {
+  background-color: var(--gold);
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  min-width: fit-content;
+}
+.landing-card .card-body > p {
+  color: var(--gold);
+  padding-left: 2px;
+  font-size: 1.2em;
+}
+
+footer {
+  padding: 5px;
+  margin-top: 6em;
+  background-color: var(--grey-black);
+}
+.footer-items {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer p {
+  color: white;
+  padding: 5px;
+}
+footer .item-value {
+  color: var(--gold);
+  padding: 5px;
+}
+
+/*--End of Landind page*/
+/*--start of profile page*/
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--grey-black);
+}
+.profile-page > h1 {
+  margin-top: 25px;
+  color: var(--grey-black);
+}
+.top-cards {
+  width: 96%;
+
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.balance-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--grey-black);
+  width: 245px;
+  height: 150px;
+  border-radius: 10px 15px 15px 10px;
+  padding: 1.3em 1em 1em 1em;
+  color: var(--gold);
+  position: relative;
+}
+.balance-card::before {
+  content: '';
+  width: 10px;
+  background-color: var(--gold);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  border-radius: 15px 0 0 15px;
+}
+
+.balance-card img {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 5px;
+}
+.balance-card h3 {
+  padding: 7px 1px;
+  font-size: 1.5em;
+}
+
+.profile-page .table-info {
+  border-collapse: separate;
+  margin: 30px 0px;
+  width: 80%;
+  border-radius: 15px;
+  border-spacing: 0px;
+  overflow: hidden;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--grey-black);
+  color: var(--gold);
+}
+tr:nth-child(even) {
+  background-color: var(--gold);
+  color: var(--grey-black);
+}
+
+td {
+  padding: 1.5em;
+  font-size: larger;
+}
+
+/*--End of profile Page*/
+/*--Start of Wallets Page*/
+.wallets-page {
+  margin-top: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wallets-page .wallet-card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wallet-Shape .wallet-page-card-email {
+  width: 100%;
+}
+.wallets-page > h1 {
+  font-size: 2em;
+  margin-bottom: 1em;
+  color: var(--grey-black);
+}
+.wallet-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+.wallets-page .wallet-Shape {
+  background-color: var(--grey-black);
+  width: 34%;
+  height: 250px;
+  border-radius: 10px;
+  min-width: fit-content;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.wallets-page .wallet-Shape p {
+  color: var(--gold);
+  padding: 0.7em 0.4em 0.4em 0.5em;
+  font-size: 1.5em;
+}
+.wallets-page .wallet-Shape .wallet-page-card-email {
+  color: var(--white-color);
+}
+.wallets-page .btn-add-new-wallet {
+  background-color: var(--gold);
+  font-size: 1.3em;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  color: var(--grey-black);
+  border: none;
+  cursor: pointer;
+}
+
+.wallets-page .btn-add-new-wallet:hover {
+  background-color: var(--grey-black);
+  color: var(--gold);
+}
+
+.popup-container {
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 300px;
+
+  position: fixed;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gold);
+  align-items: center;
+  padding: 50px 20px;
+  border-radius: 10px;
+}
+
+.submit-button-cancel button {
+  width: 100%;
+  padding: 12px 40px;
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  outline: none;
+  cursor: pointer;
+}
+.submit-button-cancel button:hover {
+  background-color: rgb(127, 127, 127);
+}
+.hidden {
+  display: none;
+}
+
+/*--End of Wallet Page*/
+/*--Start of Transactions Page*/
+.transactions-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.transactions-page > h1 {
+  color: var(--grey-black);
+  margin-top: 25px;
+  font-size: 2em;
+}
+
+.transactions-page .table-info {
+  margin-top: 55px;
+  width: 80%;
+  border-radius: 25px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.buttons-section {
+  margin-top: 15px;
+  width: 80%;
+  justify-content: space-between;
+  display: flex;
+  gap: 5px;
+}
+.buttons-section .button-item {
+  text-align: center;
+  width: 200px;
+  background-color: var(--gold);
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 1.3em;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.buttons-section .button-item:hover {
+  background-color: var(--grey-black);
+  color: var(--gold);
+}
+
+.wallets-dropdown {
+  width: 98%;
+  margin-bottom: 25px;
+  padding: 2px;
+}
+.wallets-dropdown select {
+  color: white;
+}
+.popup-form {
+  height: fit-content;
+}
+.popup-form input.search-input {
+  width: 98%;
+  margin-bottom: 1px;
+}
+.wallets_dropdown-sel {
+  width: 98%;
+  padding: 0px 2px 2px 2px;
+  margin-bottom: 15px;
+}
+
+/*--End of Transactions Page*/
+
+@media all and (max-width: 980px) {
+  .landing-page .main-section {
+    height: fit-content;
+    min-height: fit-content;
+  }
+  .landing-page .main-right-section {
+    display: none;
+  }
+  .landing-page .main-section .main-left-section {
+    width: 100%;
+    padding: 30px 10% 0px 10%;
+    min-height: fit-content;
+    margin-bottom: 35px;
+  }
+
+  .landing-page .main-buttons a {
+    padding: 0.7em 2.4em;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .landing-page-cards {
+    flex-direction: column;
+    width: 82%;
+    gap: 25px;
+  }
+
+  .landing-card {
+    width: 100%;
+  }
+  .footer-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-cards {
+    flex-direction: column;
+    width: 80%;
+    gap: 15px;
+  }
+  .balance-card {
+    width: 100%;
+  }
+
+  .wallet-container {
+    flex-direction: column;
+  }
+  .wallets-page .wallet-card-container {
+    width: 80%;
+  }
+  .wallets-page .wallet-Shape {
+    width: 100%;
+  }
+
+  .transactions-page .table-info .hidee {
+    display: none;
+    background-color: red;
+  }
+
+  .buttons-section .button-item {
+    padding: 0.6em;
+  }
+}
