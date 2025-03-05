@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="../styles/style.css"
+    />
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/axiosInstance.js"></script>
+
+    <title>Login User Page</title>
+  </head>
+  <body>
+    <!-----Start Of Header Section -->
+    <header>
+      <a href="../index.html"
+        ><img
+          src="/assets/images/logo1.png"
+          alt="logo.jpg"
+      /></a>
+      <nav>
+        <div class="nav-item">
+          <i>
+            <a href="../index.html">Home</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a href="/user/register.html">Register</a>
+          </i>
+        </div>
+      </nav>
+    </header>
+    <!-----End Of Header Section -->
+    <div class="sign-in-page">
+      <form
+        onsubmit="userLoginApi(event)"
+        class="sign-in-form"
+      >
+        <div class="input-field">
+          <img
+            src="../assets/icons/email.svg"
+            alt="email.svg"
+          />
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email-Address"
+            required
+          />
+        </div>
+        <div class="input-field">
+          <img
+            src="../assets/icons/password.svg"
+            alt="email.svg"
+          />
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div class="input-field submit-button">
+          <input
+            type="submit"
+            value="Sign In"
+          />
+        </div>
+      </form>
+    </div>
+
+    <script src="/js/userLogin.js"></script>
+  </body>
+</html>
