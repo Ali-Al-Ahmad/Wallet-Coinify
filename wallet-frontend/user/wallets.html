@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="../styles/style.css"
+    />
+    <title>User Wallets Page</title>
+  </head>
+  <body>
+    <!-----Start Of Header Section -->
+    <header>
+      <a href="#"
+        ><img
+          src="/assets/images/logo1.png"
+          alt="logo.jpg"
+      /></a>
+      <nav>
+        <div class="nav-item">
+          <i>
+            <a href="transactions.html">Transactions</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a href="profile.html">Profile</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a
+              href="../index.html"
+              id="logout"
+              >Logout</a
+            >
+          </i>
+        </div>
+      </nav>
+    </header>
+    <!-----End Of Header Section -->
+    <!-----Start Of Wallets Section -->
+    <section class="wallets-page">
+      <h1 ><span id="firs_name_span"></span> wallets</h1>
+    <button id="btn-add-new-wallet" class="btn-add-new-wallet">Add New Wallet</button>
+      <div id="wallet-card-container" class="wallet-card-container">
+
+        <div  class="wallet-container">
+        <div class="wallet-Shape">
+          <p>Main Wallet</p>
+          <p class="wallet-page-card-email">ali.alahmad.cs@gmail.com</p>
+          <p>$0</p>
+        </div>
+
+        <div class="wallet-Shape">
+          <p>Main Card</p>
+          <p class="wallet-page-card-email">No. 555 444 222 442</p>
+          <p>PIN 321</p>
+        </div>
+      </div>
+
+    </section>
+    <!-- end of cards and wallets section -->
+    <section id="add_wallet_section" class="popup-container hidden">
+      <form id="popup-form" class="popup-form" >
+    <div class="input-field">
+          <img
+            src="../assets/icons/wallet-black.svg"
+            alt="wallet.svg"
+          />
+              <input class="input-field" type="text" id="wallet-name-input" name="name" placeholder="wallet name" required >
+        </div>
+        <div class="input-field submit-button">
+          <input
+          id="submit-wallet"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+        <div  class="input-field submit-button-cancel">
+          <button id="cancel-wallet">Cancel</button>
+        </div>
+  
+    </section>
+    <!-----End Of Wallets Section -->
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/axiosInstance.js"></script>
+    <script src="../js/userWallets.js"></script>
+  </body>
+</html>
