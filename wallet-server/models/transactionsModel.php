@@ -27,4 +27,21 @@ class Transaction
 
     return responseSuccess("All transactions", $transactions);
   }
+
+  // Delete transaction
+  public function delete($id)
+  {
+    if (empty($id)) {
+      die(responseError("Transaction ID is missing"));
+    }
+
+    $query = $this->conn->prepare("DELETE FROM transactions WHERE id = ?");
+    $query->bind_param("i", $id);
+
+    if ($query->execute()) {
+      return responseSuccess("Transaction deleted successfully");
+    } else {
+      die(responseError("Failed to delete transaction"));
+    }
+  }
 }
