@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="../styles/style.css"
+    />
+    <title>User Profile Page</title>
+  </head>
+  <body>
+    <!-----Start Of Header Section -->
+    <header>
+      <a href="#"
+        ><img
+          src="/assets/images/logo1.png"
+          alt="logo.jpg"
+      /></a>
+      <nav>
+        <div class="nav-item">
+          <i>
+            <a href="transactions.html">Transactions</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a href="wallets.html">Wallets</a>
+          </i>
+        </div>
+        <div class="nav-item">
+          <i>
+            <a
+              href="../index.html"
+              id="logout"
+              >Logout</a
+            >
+          </i>
+        </div>
+      </nav>
+    </header>
+    <!-----End Of Header Section -->
+    <!-----Start Of Profile Section -->
+    <div class="profile-page">
+      <h1><span id="profile_header_first_name"></span>Profile Page</h1>
+      <div class="top-cards">
+        <div class="balance-card">
+          <img
+            src="../assets/icons/wallet.svg"
+            alt=""
+          />
+          <h3>Balance</h3>
+          <h3 id="total_balance">$0</h3>
+        </div>
+
+        <div class="balance-card">
+          <img
+            src="../assets/icons/sent.svg"
+            alt=""
+          />
+          <h3>Sent</h3>
+          <h3 id="sent_balance">$0</h3>
+        </div>
+
+        <div class="balance-card">
+          <img
+            src="../assets/icons/received.svg"
+            alt=""
+          />
+          <h3>Received</h3>
+          <h3 id="received_balance">$0</h3>
+        </div>
+      </div>
+
+      <table class="table-info">
+        <tr>
+          <td>First Name</td>
+          <td id="first_name_td">ali</td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td id="last_name_td">al ahmad</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td id="email_td">al ahmad</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td id="phone_td">71 505 894</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-----End Of Profile Section -->
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/axiosInstance.js"></script>
+    <script src="../js/userProfile.js"></script>
+  </body>
+</html>
