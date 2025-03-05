@@ -4,10 +4,10 @@ require_once "../../../utils/utils.php";
 require_once "../../../models/userModel.php";
 
 
-if (!isset($data["email"]) || !isset($data["password"])) {
-  die(responseError("Missing email or password!"));
+if (!isset($data["id"]) || !isset($data["email"])) {
+    die(responseError("Missin fields"));
 }
 
 $user = new User();
-$response = $user->signIn($data["email"], $data["password"]);
+$response = $user->update($data["id"], $data["email"]);
 echo $response;
