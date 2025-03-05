@@ -44,4 +44,24 @@ class Transaction
       die(responseError("Failed to delete transaction"));
     }
   }
+
+  // Get transaction by ID
+  public function getTransactionById($id)
+  {
+    if (empty($id)) {
+      die(responseError("Transaction ID is required"));
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM transactions WHERE id = ?");
+    $query->bind_param("i", $id);
+    $query->execute();
+    $result = $query->get_result();
+    $transaction = $result->fetch_assoc();
+
+    if ($transaction) {
+      return responseSuccess("Transaction found", $transaction);
+    } else {
+      die(responseError("Transaction not found"));
+    }
+  }
 }
