@@ -162,4 +162,24 @@ class Transaction
     $query->bind_param("di", $new_balance, $wallet_id);
     return $query->execute();
   }
+
+  // Get transactions by wallet ID
+  public function getTransactionsByWalletId($wallet_id)
+  {
+    if (empty($wallet_id)) {
+      die(responseError("Wallet ID is required"));
+    }
+
+    $query = $this->conn->prepare("SELECT * FROM transactions WHERE sender_wallet_id = ? OR recipient_wallet_id = ? ORDER BY id DESC");
+    $query->bind_param("ii", $wallet_id, $wallet_id);
+    $query->execute();
+    $result = $query->get_result();
+
+    $transactions = [];
+    while ($transaction = $result->fetch_assoc()) {
+      $transactions[] = $transaction;
+    }
+
+    return responseSuccess("Wallet Transactions", $transactions);
+  }
 }
