@@ -108,3 +108,10 @@ btn_submit_wallet.addEventListener('click', async function (event) {
     console.log(error)
   }
 })
+
+
+const logutButton = document.getElementById('logout')
+logutButton.addEventListener('click', function () {
+  localStorage.removeItem('user_id')
+  window.location.href = '../index.html'
+})
