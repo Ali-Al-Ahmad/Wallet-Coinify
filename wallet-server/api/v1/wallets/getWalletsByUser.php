@@ -8,7 +8,7 @@ if (!isset($data["user_id"])) {
   die(responseError("User Id missing"));
 }
 
-$wallet = new wallet();
+$wallet = new Wallet();
 $response = $wallet->getAllWalletsByUserId($data["user_id"]);
 
 echo $response;

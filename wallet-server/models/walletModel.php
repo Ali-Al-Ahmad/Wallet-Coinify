@@ -144,6 +144,7 @@ class Wallet
   {
     if (empty($user_id)) {
       return responseError("User ID is required");
+      exit();
     }
 
     $query = $this->conn->prepare("SELECT * FROM Wallets WHERE user_id = ? ORDER BY id");
