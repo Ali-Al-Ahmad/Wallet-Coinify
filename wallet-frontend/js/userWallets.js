@@ -37,7 +37,7 @@ async function getUserDetails() {
 async function getUserWallets() {
   try {
     const response = await api.get(
-      `/api/v1/Wallets/getWalletsByUser.php?user_id=${user_id}`
+      `/api/v1/wallets/getWalletsByUser.php?user_id=${user_id}`
     )
 
     if (response.data.status !== 'success') {

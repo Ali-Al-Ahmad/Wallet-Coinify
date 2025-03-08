@@ -64,7 +64,7 @@ async function getUserDetails() {
 async function getUserWallets() {
   try {
     const response = await api.get(
-      `/api/v1/Wallets/getWalletsByUser.php?user_id=${user_id}`
+      `/api/v1/wallets/getWalletsByUser.php?user_id=${user_id}`
     )
 
     if (response.data.status !== 'success') {
@@ -185,7 +185,7 @@ btn_submit_deposit.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/Transactions/AddTransaction.php', {
+    const response = await api.post('/api/v1/transactions/AddTransaction.php', {
       type: 'deposit',
       user_id: user_id,
       amount: deposit_amount.value,
@@ -218,7 +218,7 @@ btn_submit_withdraw.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/Transactions/AddTransaction.php', {
+    const response = await api.post('/api/v1/transactions/AddTransaction.php', {
       type: 'withdraw',
       user_id: user_id,
       amount: withdraw_amount_input.value,
@@ -291,7 +291,7 @@ btn_submit_transfer.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/Transactions/AddTransaction.php', {
+    const response = await api.post('/api/v1/transactions/AddTransaction.php', {
       type: 'transfer',
       user_id: user_id,
       amount: transfer_amount_input.value,
