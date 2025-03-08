@@ -158,7 +158,7 @@ class Transaction
   // Update wallet Balance
   private function updateWalletBalance($wallet_id, $new_balance)
   {
-    $query = $this->conn->prepare("UPDATE Wallets SET balance = ? WHERE id = ?");
+    $query = $this->conn->prepare("UPDATE wallets SET balance = ? WHERE id = ?");
     $query->bind_param("di", $new_balance, $wallet_id);
     return $query->execute();
   }
