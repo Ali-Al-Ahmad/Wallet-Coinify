@@ -24,7 +24,7 @@ class Admin
 
     $hashedPassword = hashPassword($password);
 
-    $query = $this->conn->prepare("INSERT INTO Admins (email, password) VALUES (?, ?)");
+    $query = $this->conn->prepare("INSERT INTO admins (email, password) VALUES (?, ?)");
     $query->bind_param("ss", $email, $hashedPassword);
     $success = $query->execute();
 

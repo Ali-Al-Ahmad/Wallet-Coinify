@@ -13,7 +13,7 @@ class Ticket
   public function addTicket($user_id, $subject, $description)
   {
     $description = "pending";
-    $query = $this->conn->prepare("INSERT INTO Tickets (user_id, subject, description,status) VALUES (?, ?, ?, ?)");
+    $query = $this->conn->prepare("INSERT INTO tickets (user_id, subject, description,status) VALUES (?, ?, ?, ?)");
     $query->bind_param("isss", $user_id, $subject, $description, $description);
     $success = $query->execute();
 

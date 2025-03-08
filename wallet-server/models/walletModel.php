@@ -25,7 +25,7 @@ class Wallet
     }
     $query->close();
     $starting_balance = 0;
-    $query = $this->conn->prepare("INSERT INTO Wallets (user_id, name, balance) VALUES (?, ?, ?)");
+    $query = $this->conn->prepare("INSERT INTO wallets (user_id, name, balance) VALUES (?, ?, ?)");
     $query->bind_param("isd", $user_id, $name, $starting_balance);
     $success = $query->execute();
 

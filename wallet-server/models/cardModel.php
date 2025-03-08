@@ -22,7 +22,7 @@ class Card
       $today = new DateTime();
       $today->modify('+10 days');
       $expiryDate = $today->format('Y-m-d');
-      $query = $this->conn->prepare("INSERT INTO Cards (wallet_id, number, pin, expiry_date) VALUES (?, ?, ?,?)");
+      $query = $this->conn->prepare("INSERT INTO cards (wallet_id, number, pin, expiry_date) VALUES (?, ?, ?,?)");
       $query->bind_param("isis", $wallet_id, $user["phone"], $wallet_id, $expiryDate);
       $success = $query->execute();
 
