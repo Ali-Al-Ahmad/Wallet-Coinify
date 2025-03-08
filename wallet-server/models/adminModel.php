@@ -12,7 +12,7 @@ class Admin
   //Admin Singup
   public function signUp($email, $password)
   {
-    $query = $this->conn->prepare("SELECT id FROM Admins WHERE email = ?");
+    $query = $this->conn->prepare("SELECT id FROM admins WHERE email = ?");
     $query->bind_param("s", $email);
     $query->execute();
     $result = $query->get_result();
@@ -46,7 +46,7 @@ class Admin
       return responseError("Missing field is required.");
     }
 
-    $query = $this->conn->prepare("SELECT id, password FROM Admins WHERE email = ?");
+    $query = $this->conn->prepare("SELECT id, password FROM admins WHERE email = ?");
     $query->bind_param("s", $email);
     $query->execute();
     $result = $query->get_result();
@@ -67,7 +67,7 @@ class Admin
       return responseError("Missing field is required.");
     }
 
-    $query = $this->conn->prepare("SELECT id FROM Admins WHERE id = ?");
+    $query = $this->conn->prepare("SELECT id FROM admins WHERE id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();
@@ -93,7 +93,7 @@ class Admin
   public static function getAllAdmins()
   {
     global $conn;
-    $query = $conn->prepare("SELECT * FROM Admins ORDER BY id DESC");
+    $query = $conn->prepare("SELECT * FROM admins ORDER BY id DESC");
     $query->execute();
     $result = $query->get_result();
     $Admins = [];
@@ -112,7 +112,7 @@ class Admin
       return responseError("Admin ID is required");
     }
 
-    $query = $this->conn->prepare("SELECT * FROM Admins WHERE id = ?");
+    $query = $this->conn->prepare("SELECT * FROM admins WHERE id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();
@@ -151,7 +151,7 @@ class Admin
       return responseError("Admin ID is missing");
     }
 
-    $query = $this->conn->prepare("DELETE FROM Admins WHERE id = ?");
+    $query = $this->conn->prepare("DELETE FROM admins WHERE id = ?");
     $query->bind_param("i", $id);
     $success = $query->execute();
 

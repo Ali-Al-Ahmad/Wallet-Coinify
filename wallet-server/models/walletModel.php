@@ -14,7 +14,7 @@ class Wallet
   //Wallet Add
   public function addWallet($user_id, $name)
   {
-    $query = $this->conn->prepare("SELECT id FROM Wallets WHERE user_id = ? and name = ?");
+    $query = $this->conn->prepare("SELECT id FROM wallets WHERE user_id = ? and name = ?");
     $query->bind_param("is", $user_id, $name);
     $query->execute();
     $result = $query->get_result();
@@ -53,7 +53,7 @@ class Wallet
   public static function getAllWallets()
   {
     global $conn;
-    $query = $conn->prepare("SELECT * FROM Wallets ORDER BY id DESC");
+    $query = $conn->prepare("SELECT * FROM wallets ORDER BY id DESC");
     $query->execute();
     $result = $query->get_result();
     $wallets = [];
@@ -72,7 +72,7 @@ class Wallet
       return responseError("Wallet ID is required");
     }
 
-    $query = $this->conn->prepare("SELECT * FROM Wallets WHERE id = ?");
+    $query = $this->conn->prepare("SELECT * FROM wallets WHERE id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();
@@ -111,7 +111,7 @@ class Wallet
       return responseError("Wallet ID is missing");
     }
 
-    $query = $this->conn->prepare("DELETE FROM Wallets WHERE id = ?");
+    $query = $this->conn->prepare("DELETE FROM wallets WHERE id = ?");
     $query->bind_param("i", $id);
     $success = $query->execute();
 
@@ -131,7 +131,7 @@ class Wallet
       return responseError("ID is missing");
     }
 
-    $query = $this->conn->prepare("DELETE FROM Wallets WHERE user_id = ?");
+    $query = $this->conn->prepare("DELETE FROM wallets WHERE user_id = ?");
     $query->bind_param("i", $user_id);
     $success = $query->execute();
     $delAllCards = new Card();
@@ -146,7 +146,7 @@ class Wallet
       return responseError("User ID is required");
       exit();
     }
-    $query = $this->conn->prepare("SELECT * FROM Wallets WHERE user_id = ? ORDER BY id");
+    $query = $this->conn->prepare("SELECT * FROM wallets WHERE user_id = ? ORDER BY id");
     $query->bind_param("i", $user_id);
     $query->execute();
     $result = $query->get_result();

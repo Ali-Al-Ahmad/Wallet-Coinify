@@ -36,7 +36,7 @@ class Card
   public static function getAllCards()
   {
     global $conn;
-    $query = $conn->prepare("SELECT * FROM Cards ORDER BY id DESC");
+    $query = $conn->prepare("SELECT * FROM cards ORDER BY id DESC");
     $query->execute();
     $result = $query->get_result();
     $cards = [];
@@ -55,7 +55,7 @@ class Card
       return responseError("Card ID is required");
     }
 
-    $query = $this->conn->prepare("SELECT * FROM Cards WHERE id = ?");
+    $query = $this->conn->prepare("SELECT * FROM cards WHERE id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();
@@ -94,7 +94,7 @@ class Card
       return responseError("Card ID is missing");
     }
 
-    $query = $this->conn->prepare("DELETE FROM Cards WHERE id = ?");
+    $query = $this->conn->prepare("DELETE FROM cards WHERE id = ?");
     $query->bind_param("i", $id);
     $success = $query->execute();
 
@@ -138,7 +138,7 @@ class Card
       return responseError("Wallet ID is required");
     }
 
-    $query = $this->conn->prepare("SELECT * FROM Cards WHERE wallet_id = ?");
+    $query = $this->conn->prepare("SELECT * FROM cards WHERE wallet_id = ?");
     $query->bind_param("i", $wallet_id);
     $query->execute();
     $result = $query->get_result();

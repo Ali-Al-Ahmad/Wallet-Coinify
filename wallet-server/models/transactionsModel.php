@@ -192,8 +192,8 @@ class Transaction
 
     $query = $this->conn->prepare("
         SELECT * FROM transactions 
-        WHERE sender_wallet_id IN (SELECT id FROM Wallets WHERE user_id = ?) 
-        OR recipient_wallet_id IN (SELECT id FROM Wallets WHERE user_id = ?) 
+        WHERE sender_wallet_id IN (SELECT id FROM wallets WHERE user_id = ?) 
+        OR recipient_wallet_id IN (SELECT id FROM wallets WHERE user_id = ?) 
         ORDER BY id DESC
     ");
 

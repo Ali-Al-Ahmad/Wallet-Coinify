@@ -33,7 +33,7 @@ class Ticket
   public static function getAllTickets()
   {
     global $conn;
-    $query = $conn->prepare("SELECT * FROM Tickets ORDER BY id DESC");
+    $query = $conn->prepare("SELECT * FROM tickets ORDER BY id DESC");
     $query->execute();
     $result = $query->get_result();
     $tickets = [];
@@ -52,7 +52,7 @@ class Ticket
       return responseError("Ticket ID is required");
     }
 
-    $query = $this->conn->prepare("SELECT * FROM Tickets WHERE id = ?");
+    $query = $this->conn->prepare("SELECT * FROM tickets WHERE id = ?");
     $query->bind_param("i", $id);
     $query->execute();
     $result = $query->get_result();
@@ -91,7 +91,7 @@ class Ticket
       return responseError("Ticket ID is missing");
     }
 
-    $query = $this->conn->prepare("DELETE FROM Tickets WHERE id = ?");
+    $query = $this->conn->prepare("DELETE FROM tickets WHERE id = ?");
     $query->bind_param("i", $id);
     $success = $query->execute();
 
