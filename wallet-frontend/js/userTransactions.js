@@ -185,7 +185,7 @@ btn_submit_deposit.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/transactions/AddTransaction.php', {
+    const response = await api.post('/api/v1/transactions/addTransaction.php', {
       type: 'deposit',
       user_id: user_id,
       amount: deposit_amount.value,
@@ -218,7 +218,7 @@ btn_submit_withdraw.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/transactions/AddTransaction.php', {
+    const response = await api.post('/api/v1/transactions/addTransaction.php', {
       type: 'withdraw',
       user_id: user_id,
       amount: withdraw_amount_input.value,
@@ -291,7 +291,7 @@ btn_submit_transfer.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/transactions/AddTransaction.php', {
+    const response = await api.post('/api/v1/transactions/addTransaction.php', {
       type: 'transfer',
       user_id: user_id,
       amount: transfer_amount_input.value,

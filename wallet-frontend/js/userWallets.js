@@ -94,7 +94,7 @@ btn_submit_wallet.addEventListener('click', async function (event) {
   event.preventDefault()
 
   try {
-    const response = await api.post('/api/v1/wallets/AddWallet.php', {
+    const response = await api.post('/api/v1/wallets/addWallet.php', {
       user_id: user_id,
       name: wallet_name.value,
     })
