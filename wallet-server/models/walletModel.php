@@ -146,7 +146,6 @@ class Wallet
       return responseError("User ID is required");
       exit();
     }
-
     $query = $this->conn->prepare("SELECT * FROM Wallets WHERE user_id = ? ORDER BY id");
     $query->bind_param("i", $user_id);
     $query->execute();
