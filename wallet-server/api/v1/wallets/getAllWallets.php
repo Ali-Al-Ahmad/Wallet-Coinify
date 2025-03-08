@@ -13,6 +13,6 @@ if (!isset($data["id"])) {
 }
 
 //get wallet by id if provided
-$wallet = new wallet();
+$wallet = new Wallet();
 $response = $wallet->getwalletById($data["id"]);
 echo $response;
